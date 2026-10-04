@@ -657,7 +657,7 @@ ul {
   margin-bottom: 22px;
 }
 
-.learning-item > span {
+.learning-item>span {
   display: block;
 
   font-size: 0.8rem;
@@ -1224,7 +1224,7 @@ ul {
   color: var(--accent);
 }
 
-.contact-content > p:not(.section-number) {
+.contact-content>p:not(.section-number) {
   color: var(--text-muted);
 
   max-width: 550px;
@@ -1332,6 +1332,7 @@ footer {
   .nav-links {
     display: none;
   }
+
   .menu-toggle {
     display: flex;
   }
@@ -1397,11 +1398,13 @@ footer {
     width: 100%;
     justify-content: center;
   }
+
   .menu-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .hero-card-wrapper {
     width: 100%;
   }
@@ -1605,6 +1608,7 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
 .hero-intro .hero-content {
   animation: heroContentIn 1s ease forwards;
 }
@@ -1637,6 +1641,7 @@ body {
     transform: translateY(0);
   }
 }
+
 .hero-intro .small-title {
   opacity: 0;
   animation: heroItemIn 0.7s ease 0.1s forwards;
@@ -1715,6 +1720,7 @@ body {
 .timeline-content {
   width: 100%;
 }
+
 /* =========================================
    GLOBAL SECTION TRANSITIONS
    Applied to every portfolio section
@@ -1779,6 +1785,7 @@ main section[id] {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1990,7 +1997,7 @@ main section[id] {
     align-items: flex-start;
   }
 
-  .activity-card > div:last-child {
+  .activity-card>div:last-child {
     min-width: 0;
   }
 
@@ -2194,11 +2201,57 @@ main section[id] {
 
   transform: translateY(-2px);
 }
+
 /* =========================================================
    FINAL MOBILE PROJECT FIX
 ========================================================= */
 
 @media (max-width: 600px) {
+  .activity-card {
+    width: 100%;
+    padding: 24px;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .activity-icon {
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+  }
+
+  .activity-content {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .activity-card h3 {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .experience-role {
+    font-size: 0.82rem;
+  }
+
+  .experience-date {
+    font-size: 0.76rem;
+    line-height: 1.5;
+  }
+
+  .experience-description {
+    font-size: 0.78rem;
+    line-height: 1.65;
+    margin-top: 12px;
+  }
+
+  .certificate-link {
+    margin-top: 14px;
+    padding: 9px 13px;
+    font-size: 0.76rem;
+  }
+
   .projects-grid {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
@@ -2362,12 +2415,10 @@ main section[id] {
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(124, 92, 255, 0.2) 0%,
-    rgba(0, 229, 255, 0.08) 40%,
-    transparent 72%
-  );
+  background: radial-gradient(circle,
+      rgba(124, 92, 255, 0.2) 0%,
+      rgba(0, 229, 255, 0.08) 40%,
+      transparent 72%);
   filter: blur(45px);
   pointer-events: none;
 }
@@ -2400,12 +2451,10 @@ main section[id] {
 
   text-align: center;
 
-  background: radial-gradient(
-    circle,
-    rgba(124, 92, 255, 0.16),
-    rgba(10, 12, 25, 0.15) 65%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(124, 92, 255, 0.16),
+      rgba(10, 12, 25, 0.15) 65%,
+      transparent 70%);
 
   border: 1px solid rgba(124, 92, 255, 0.18);
 
@@ -2633,6 +2682,7 @@ main section[id] {
 ========================================= */
 
 @keyframes growthFloat {
+
   0%,
   100% {
     transform: translateY(0);
@@ -2755,58 +2805,59 @@ main section[id] {
 ========================================= */
 
 .about-stats {
-    gap: 16px;
+  gap: 16px;
 }
 
 .stat {
-    min-height: 125px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  min-height: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .stat h3 {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
 }
 
 .stat p {
-    line-height: 1.6;
+  line-height: 1.6;
 }
 
 .learning-item {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .learning-note {
-    border-top: 1px solid var(--border);
-    padding-top: 18px;
-    margin-top: 25px;
-    color: var(--accent-light);
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+  margin-top: 25px;
+  color: var(--accent-light);
 }
+
 /* =========================================
    SKILLS CARD TEXT REFINEMENT
 ========================================= */
 
 .skill-description {
-    font-size: 0.78rem;
-    line-height: 1.55;
-    color: #9b9ba8;
-    margin: 10px 0 12px;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #9b9ba8;
+  margin: 10px 0 12px;
 }
 
 .skill-tags span {
-    font-size: 0.68rem;
-    padding: 5px 9px;
+  font-size: 0.68rem;
+  padding: 5px 9px;
 }
 
 /* Education → Core CS spacing */
 .coursework-inside-education {
-    margin-top: 55px;
+  margin-top: 55px;
 }
 
 .coursework-inside-education .section-heading {
-    margin-bottom: 35px;
+  margin-bottom: 35px;
 }
 
 /* =========================================
@@ -2814,53 +2865,53 @@ main section[id] {
 ========================================= */
 
 .activity-content {
-    flex: 1;
+  flex: 1;
 }
 
 .experience-role {
-    color: var(--text-muted);
-    font-size: 0.82rem;
-    margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-top: 4px;
 }
 
 .experience-date {
-    color: var(--text-muted);
-    font-size: 0.78rem;
-    margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  margin-top: 2px;
 }
 
 .experience-description {
-    max-width: 700px;
-    color: var(--text-muted);
-    font-size: 0.78rem;
-    line-height: 1.7;
-    margin-top: 14px;
+  max-width: 700px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  margin-top: 14px;
 }
 
 .certificate-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
 
-    padding: 8px 13px;
+  padding: 8px 13px;
 
-    border: 1px solid rgba(124, 92, 255, 0.35);
-    border-radius: 7px;
+  border: 1px solid rgba(124, 92, 255, 0.35);
+  border-radius: 7px;
 
-    color: var(--accent-light);
-    background: rgba(124, 92, 255, 0.06);
+  color: var(--accent-light);
+  background: rgba(124, 92, 255, 0.06);
 
-    font-size: 0.75rem;
-    font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 600;
 
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .certificate-link:hover {
-    color: white;
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(124, 92, 255, 0.18);
+  color: white;
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 92, 255, 0.18);
 }
