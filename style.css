@@ -2061,8 +2061,9 @@ main section[id] {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  max-width: 1000px;
+  gap: 24px;
+  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -2806,4 +2807,60 @@ main section[id] {
 
 .coursework-inside-education .section-heading {
     margin-bottom: 35px;
+}
+
+/* =========================================
+   INTERNSHIP EXPERIENCE
+========================================= */
+
+.activity-content {
+    flex: 1;
+}
+
+.experience-role {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 4px;
+}
+
+.experience-date {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    margin-top: 2px;
+}
+
+.experience-description {
+    max-width: 700px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    margin-top: 14px;
+}
+
+.certificate-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+
+    padding: 8px 13px;
+
+    border: 1px solid rgba(124, 92, 255, 0.35);
+    border-radius: 7px;
+
+    color: var(--accent-light);
+    background: rgba(124, 92, 255, 0.06);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+.certificate-link:hover {
+    color: white;
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(124, 92, 255, 0.18);
 }
