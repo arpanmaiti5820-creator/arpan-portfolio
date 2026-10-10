@@ -14,7 +14,7 @@ html {
 
 body {
   font-family: "Inter", sans-serif;
-  background: #0b1220;
+  background: var(--background);
   color: #f5f5f5;
   line-height: 1.6;
   overflow-x: hidden;
@@ -36,7 +36,7 @@ ul {
 :root {
   --background: #101014;
 
-  --background-light: #101014;
+  --background-light: #0e0e12;
 
   --card: #111116;
 
@@ -122,7 +122,7 @@ ul {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--text);
+  color: white;
   background: var(--accent);
 }
 
@@ -140,7 +140,7 @@ ul {
 
   border: none;
 
-  color: white;
+  color: var(--text);
 
   font-size: 1.4rem;
 
@@ -531,7 +531,7 @@ ul {
 
   padding-right: max(4%, calc((100% - var(--container)) / 2));
 
-  background: #0e0e12;
+  background: var(--background-light);
 
   border-top: 1px solid var(--border);
 
@@ -2399,7 +2399,8 @@ main section[id] {
 }
 
 /* =========================================
-   UNIQUE HERO GROWTH VISUAL
+   HERO VISUAL - "IDEA TO BUILD" CIRCUIT CHIP
+   (replaces the old rotating ring)
 ========================================= */
 
 .hero-growth-wrapper {
@@ -2412,18 +2413,13 @@ main section[id] {
 
 .growth-glow {
   position: absolute;
-  width: 360px;
-  height: 360px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
-  background: radial-gradient(circle,
-      rgba(124, 92, 255, 0.2) 0%,
-      rgba(0, 229, 255, 0.08) 40%,
-      transparent 72%);
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.16) 0%, rgba(0, 229, 255, 0.07) 45%, transparent 72%);
   filter: blur(45px);
   pointer-events: none;
 }
-
-/* Main visual */
 
 .growth-visual {
   position: relative;
@@ -2432,52 +2428,70 @@ main section[id] {
   min-height: 500px;
 }
 
-/* Center circle */
+/* Blueprint dot grid */
+.growth-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(124, 92, 255, 0.25) 1px, transparent 1.5px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at 65% 40%, #000 25%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 65% 40%, #000 25%, transparent 72%);
+  pointer-events: none;
+}
 
+/* The chip */
 .growth-center {
   position: absolute;
-  top: 45px;
-  right: 55px;
-
-  width: 280px;
-  height: 280px;
-
-  border-radius: 50%;
-
+  top: 24px;
+  right: 34px;
+  width: 240px;
+  height: 240px;
+  border-radius: 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
-
-  background: radial-gradient(circle,
-      rgba(124, 92, 255, 0.16),
-      rgba(10, 12, 25, 0.15) 65%,
-      transparent 70%);
-
-  border: 1px solid rgba(124, 92, 255, 0.18);
-
-  box-shadow:
-    inset 0 0 50px rgba(124, 92, 255, 0.05),
-    0 0 70px rgba(124, 92, 255, 0.08);
-
+  background: linear-gradient(150deg, #1c1a30, #121120);
+  border: 1px solid rgba(124, 92, 255, 0.4);
+  box-shadow: inset 0 0 40px rgba(124, 92, 255, 0.06), 0 25px 60px rgba(0, 0, 0, 0.35);
   animation: growthFloat 5s ease-in-out infinite;
+}
+
+/* Chip pins on all four sides */
+.growth-center::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(124, 92, 255, 0.55) 0 3px, transparent 3px 20px) center top / calc(100% - 64px) 12px no-repeat,
+    repeating-linear-gradient(90deg, rgba(124, 92, 255, 0.55) 0 3px, transparent 3px 20px) center bottom / calc(100% - 64px) 12px no-repeat,
+    repeating-linear-gradient(0deg, rgba(124, 92, 255, 0.55) 0 3px, transparent 3px 20px) left center / 12px calc(100% - 64px) no-repeat,
+    repeating-linear-gradient(0deg, rgba(124, 92, 255, 0.55) 0 3px, transparent 3px 20px) right center / 12px calc(100% - 64px) no-repeat;
+}
+
+/* Scan line sweeping down the chip */
+.growth-center::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(0, 229, 255, 0.22), transparent) 0 -70px / 100% 70px no-repeat;
+  animation: chipScan 4.5s ease-in-out infinite;
 }
 
 .code-symbol {
   font-family: monospace;
-  font-size: 5rem;
+  font-size: 4.2rem;
   font-weight: 700;
-
-  letter-spacing: -8px;
-
+  letter-spacing: -6px;
   background: linear-gradient(135deg, #00e5ff, #7c5cff);
-
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-
   margin-bottom: 12px;
 }
 
@@ -2493,162 +2507,117 @@ main section[id] {
   width: 25px;
   height: 2px;
   margin-top: 14px;
-
   background: var(--accent);
-
   box-shadow: 0 0 10px rgba(124, 92, 255, 0.7);
 }
 
-/* Orbit text */
-
+/* Data pipeline: a pulse travels along the loop text */
 .growth-orbit {
   position: absolute;
-
-  top: 8px;
-  right: 5px;
-
-  width: 360px;
-  height: 360px;
-
-  border: 1px dashed rgba(124, 92, 255, 0.35);
-
-  border-radius: 50%;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-
-  padding-top: 0;
-
-  color: #9c8bdf;
-
+  top: 296px;
+  right: 0;
+  width: 340px;
+  padding-bottom: 10px;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(124, 92, 255, 0.3);
+  color: var(--accent-light);
   font-family: monospace;
   font-size: 0.58rem;
   font-weight: 600;
-
   letter-spacing: 2px;
+}
 
-  transform: rotate(-12deg);
-
-  animation: orbitRotate 18s linear infinite;
+.growth-orbit::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent));
+  box-shadow: 0 0 10px var(--accent);
+  animation: packetFlow 3s linear infinite;
 }
 
 /* Timeline */
-
 .growth-timeline {
   position: absolute;
-
   left: 0;
   top: 40px;
-
   width: 155px;
-
   display: flex;
   flex-direction: column;
-
   gap: 28px;
-
   padding-left: 28px;
-
   border-left: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .growth-step {
   position: relative;
-
   display: flex;
   gap: 14px;
 }
 
 .growth-step::before {
   content: "";
-
   position: absolute;
-
   left: -33px;
   top: 5px;
-
   width: 9px;
   height: 9px;
-
-  border-radius: 50%;
-
-  background: #0b1220;
-
+  border-radius: 2px;
+  transform: rotate(45deg);
+  background: var(--background);
   border: 2px solid var(--accent);
-
   box-shadow: 0 0 12px rgba(124, 92, 255, 0.6);
 }
 
 .growth-number {
   color: #555565;
-
   font-family: monospace;
-
   font-size: 0.65rem;
-
   padding-top: 2px;
 }
 
 .growth-step strong {
   display: block;
-
   color: var(--accent-light);
-
   font-size: 0.78rem;
-
   letter-spacing: 1px;
-
   margin-bottom: 4px;
 }
 
 .growth-step p {
   color: #777786;
-
   font-family: monospace;
-
   font-size: 0.62rem;
-
   line-height: 1.6;
 }
 
 /* Small code block */
-
 .growth-code {
   position: absolute;
-
-  right: -5px;
-  bottom: 25px;
-
+  right: 0;
+  bottom: 34px;
   width: 235px;
-
   padding: 18px 20px;
-
   background: rgba(12, 13, 22, 0.88);
-
-  border: 1px solid rgba(124, 92, 255, 0.3);
-
+  border: 1px solid rgba(0, 229, 255, 0.3);
   border-radius: 10px;
-
   color: #aaa9b7;
-
   font-family: monospace;
-
   font-size: 0.65rem;
-
   line-height: 1.8;
-
   transform: rotate(2deg);
-
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-
   transition: 0.35s ease;
 }
 
 .growth-code:hover {
   transform: rotate(0deg) translateY(-5px);
-
-  border-color: rgba(124, 92, 255, 0.6);
+  border-color: rgba(0, 229, 255, 0.6);
 }
 
 .growth-code span {
@@ -2660,26 +2629,25 @@ main section[id] {
   font-weight: 500;
 }
 
-/* Handwritten-style note */
-
 .growth-arrow {
   position: absolute;
-
-  right: -25px;
-  bottom: 0;
-
+  right: 8px;
+  bottom: 4px;
   color: #77738d;
-
   font-family: monospace;
-
   font-size: 0.65rem;
-
-  transform: rotate(-8deg);
 }
 
-/* =========================================
-   ANIMATIONS
-========================================= */
+.growth-arrow::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 11px;
+  margin-left: 6px;
+  vertical-align: -1px;
+  background: var(--accent);
+  animation: blink 1s infinite;
+}
 
 @keyframes growthFloat {
 
@@ -2693,19 +2661,25 @@ main section[id] {
   }
 }
 
-@keyframes orbitRotate {
+@keyframes chipScan {
   from {
-    transform: rotate(-12deg);
+    background-position: 0 -70px;
   }
 
   to {
-    transform: rotate(348deg);
+    background-position: 0 250px;
   }
 }
 
-/* =========================================
-   HERO GROWTH VISUAL - TABLET
-========================================= */
+@keyframes packetFlow {
+  from {
+    transform: translateX(-80px);
+  }
+
+  to {
+    transform: translateX(350px);
+  }
+}
 
 @media (max-width: 950px) {
   .hero-growth-wrapper {
@@ -2716,10 +2690,6 @@ main section[id] {
     max-width: 520px;
   }
 }
-
-/* =========================================
-   HERO GROWTH VISUAL - MOBILE
-========================================= */
 
 @media (max-width: 600px) {
   .hero-growth-wrapper {
@@ -2733,15 +2703,14 @@ main section[id] {
   }
 
   .growth-center {
-    top: 65px;
-    right: 5%;
-
-    width: 220px;
-    height: 220px;
+    top: 40px;
+    right: 4%;
+    width: 200px;
+    height: 200px;
   }
 
   .code-symbol {
-    font-size: 3.8rem;
+    font-size: 3.4rem;
   }
 
   .growth-center-text {
@@ -2749,12 +2718,8 @@ main section[id] {
   }
 
   .growth-orbit {
-    top: 45px;
-    right: 0;
-
+    top: 262px;
     width: 280px;
-    height: 280px;
-
     font-size: 0.45rem;
     letter-spacing: 1px;
   }
@@ -2762,9 +2727,7 @@ main section[id] {
   .growth-timeline {
     top: 20px;
     left: 0;
-
     width: 135px;
-
     gap: 20px;
   }
 
@@ -2786,12 +2749,9 @@ main section[id] {
 
   .growth-code {
     right: 0;
-    bottom: 5px;
-
+    bottom: 24px;
     width: 190px;
-
     padding: 13px 15px;
-
     font-size: 0.55rem;
   }
 
@@ -2914,4 +2874,942 @@ main section[id] {
   border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(124, 92, 255, 0.18);
+}
+
+/* =========================================
+   THEME: deep teal slate + saffron
+========================================= */
+
+body {
+  background: #0b1220;
+}
+
+.logo,
+.hero h1,
+.section-heading h2,
+.contact-content h2 {
+  font-family: "Sora", "Inter", sans-serif;
+}
+
+.hero h1 {
+  letter-spacing: -3px;
+}
+
+.section-heading h2 {
+  letter-spacing: -1.5px;
+}
+
+.contact-content h2 {
+  letter-spacing: -1.5px;
+}
+
+.nav-links a:focus-visible,
+.primary-btn:focus-visible,
+.project-links a:focus-visible,
+.certificate-link:focus-visible,
+#backToTop:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+.activity-card+.activity-card {
+  margin-top: 20px;
+}
+
+/* =========================================
+   CARD STYLES + ANIMATIONS (each type is different)
+========================================= */
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Kill the old "lift up" hover on every card */
+.stat:hover,
+.skill-card:hover,
+.course-card:hover,
+.project-card:hover,
+.certificate-card:hover,
+.timeline-content:hover {
+  transform: none;
+}
+
+/* ---- About stats: accent bar grows, card slides right ---- */
+.stat {
+  border-left: 3px solid transparent;
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.stat:hover {
+  transform: translateX(8px);
+  border-left-color: var(--accent);
+  border-color: var(--border);
+  border-left-color: var(--accent);
+  background: var(--card-hover);
+}
+
+/* ---- Skills: diagonal shine, flipping icon, glowing underline ---- */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.09), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.8s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover::before {
+  left: 140%;
+}
+
+.skill-card:hover {
+  border-color: rgba(124, 92, 255, 0.45);
+  box-shadow: inset 0 -3px 0 var(--accent), 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+.skill-icon {
+  transition: transform 0.7s ease, background 0.4s ease, color 0.4s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: rotateY(360deg);
+  background: var(--accent);
+  color: white;
+}
+
+.skill-tags span {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.skill-card:hover .skill-tags span {
+  background: rgba(124, 92, 255, 0.16);
+  color: var(--accent-light);
+}
+
+/* ---- Education: corner brackets draw themselves ---- */
+.timeline-content {
+  position: relative;
+}
+
+.timeline-content::before,
+.timeline-content::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0 solid var(--accent);
+  transition: width 0.4s ease, height 0.4s ease;
+  pointer-events: none;
+}
+
+.timeline-content::before {
+  top: -1px;
+  left: -1px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-top-left-radius: 10px;
+}
+
+.timeline-content::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  border-bottom-right-radius: 10px;
+}
+
+.timeline-content:hover::before,
+.timeline-content:hover::after {
+  width: 46px;
+  height: 46px;
+}
+
+.education-result strong {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.timeline-content:hover .education-result strong {
+  transform: scale(1.2);
+  transform-origin: left bottom;
+}
+
+/* ---- Core CS: underline wipes in, icon swings, topics ripple ---- */
+.course-card {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 3px;
+  transition: background-size 0.55s ease, border-color 0.3s ease;
+}
+
+.course-card:hover {
+  background-size: 100% 3px;
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: none;
+}
+
+.course-card i {
+  transform-origin: top center;
+}
+
+.course-card:hover i {
+  animation: swing 0.9s ease;
+}
+
+.course-topics span {
+  transition: transform 0.3s ease, color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.course-card:hover .course-topics span {
+  transform: translateY(-3px);
+}
+
+.course-card:hover .course-topics span:nth-child(2n) {
+  transition-delay: 0.05s;
+}
+
+.course-card:hover .course-topics span:nth-child(3n) {
+  transition-delay: 0.1s;
+}
+
+/* ---- Projects: a light chases around the border ---- */
+.project-card::before {
+  display: none;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--angle), transparent 0 60%, var(--accent) 82%, #00e5ff 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: spinAngle 3s linear infinite;
+  pointer-events: none;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+.project-card:hover {
+  background: var(--card-hover);
+  border-color: transparent;
+}
+
+.project-icon {
+  transition: transform 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.project-card:hover .project-icon {
+  transform: rotate(-10deg) scale(1.15);
+}
+
+/* ---- Certificates: colour wipes in from the left, arrow shoots out ---- */
+.certificate-card {
+  background-image: linear-gradient(rgba(124, 92, 255, 0.14), rgba(124, 92, 255, 0.14));
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  transition: background-size 0.6s ease, border-color 0.3s ease;
+}
+
+.certificate-card:hover {
+  background-size: 100% 100%;
+  border-color: rgba(124, 92, 255, 0.5);
+}
+
+.certificate-icon {
+  transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.certificate-card:hover .certificate-icon {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.certificate-card>a,
+.certificate-card>.card-arrow {
+  margin-left: auto;
+  transition: transform 0.35s ease, color 0.3s ease;
+}
+
+.certificate-card:hover>a,
+.certificate-card:hover>.card-arrow {
+  transform: translate(4px, -4px);
+  color: var(--accent-light);
+}
+
+/* ---- Experience / hackathon: icon sends out a soft pulse ---- */
+.activity-icon {
+  position: relative;
+}
+
+.activity-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid var(--accent);
+  animation: iconPulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
+/* ---- Entrances: each card type arrives differently ---- */
+.reveal.show .skill-card {
+  animation: cardFlip 0.8s cubic-bezier(0.2, 0.8, 0.3, 1) backwards;
+}
+
+.reveal.show .stat {
+  animation: cardBlur 0.7s ease backwards;
+}
+
+.reveal.show .timeline-content {
+  animation: cardZoom 0.7s cubic-bezier(0.3, 1.4, 0.5, 1) backwards;
+}
+
+.reveal.show .course-card {
+  animation: cardZoom 0.7s cubic-bezier(0.3, 1.4, 0.5, 1) backwards;
+}
+
+.reveal.show .project-card:nth-child(odd) {
+  animation: cardLeft 0.8s ease backwards;
+}
+
+.reveal.show .project-card:nth-child(even) {
+  animation: cardRight 0.8s ease backwards;
+}
+
+.reveal.show .certificate-card {
+  animation: cardLeft 0.7s ease backwards;
+}
+
+.reveal.show :is(.stat, .skill-card, .timeline-content, .course-card, .project-card, .certificate-card):nth-child(1) {
+  animation-delay: 0.21s;
+}
+
+.reveal.show :is(.stat, .skill-card, .timeline-content, .course-card, .project-card, .certificate-card):nth-child(2) {
+  animation-delay: 0.30s;
+}
+
+.reveal.show :is(.stat, .skill-card, .timeline-content, .course-card, .project-card, .certificate-card):nth-child(3) {
+  animation-delay: 0.39s;
+}
+
+.reveal.show :is(.stat, .skill-card, .timeline-content, .course-card, .project-card, .certificate-card):nth-child(4) {
+  animation-delay: 0.48s;
+}
+
+.reveal.show :is(.stat, .skill-card, .timeline-content, .course-card, .project-card, .certificate-card):nth-child(5) {
+  animation-delay: 0.57s;
+}
+
+.reveal.show :is(.stat, .skill-card, .timeline-content, .course-card, .project-card, .certificate-card):nth-child(6) {
+  animation-delay: 0.66s;
+}
+
+.reveal.show :is(.stat, .skill-card, .timeline-content, .course-card, .project-card, .certificate-card):nth-child(7) {
+  animation-delay: 0.75s;
+}
+
+.reveal.show :is(.stat, .skill-card, .timeline-content, .course-card, .project-card, .certificate-card):nth-child(8) {
+  animation-delay: 0.84s;
+}
+
+@keyframes cardFlip {
+  from {
+    opacity: 0;
+    transform: perspective(700px) rotateX(-40deg) translateY(35px);
+  }
+}
+
+@keyframes cardBlur {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateX(-18px);
+  }
+}
+
+@keyframes cardZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes cardLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-45px);
+  }
+}
+
+@keyframes cardRight {
+  from {
+    opacity: 0;
+    transform: translateX(45px);
+  }
+}
+
+@keyframes spinAngle {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes swing {
+  20% {
+    transform: rotate(18deg);
+  }
+
+  40% {
+    transform: rotate(-14deg);
+  }
+
+  60% {
+    transform: rotate(8deg);
+  }
+
+  80% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  70%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   EXPERIENCE CARD HOVER
+========================================= */
+
+.activity-card {
+  transition: transform 0.45s cubic-bezier(0.3, 1.3, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+/* Amber bar grows from the middle of the left edge */
+.activity-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 0.45s ease;
+  pointer-events: none;
+}
+
+/* Soft amber glow fading in from the left */
+.activity-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(500px 220px at 0% 50%, rgba(124, 92, 255, 0.14), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.activity-card:hover {
+  transform: scale(1.015);
+  border-color: rgba(124, 92, 255, 0.5);
+  background: var(--card-hover);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
+}
+
+.activity-card:hover::before {
+  transform: scaleY(1);
+}
+
+.activity-card:hover::after {
+  opacity: 1;
+}
+
+/* Icon fills with amber and turns */
+.activity-icon {
+  transition: transform 0.5s cubic-bezier(0.3, 1.6, 0.5, 1), background 0.4s ease, color 0.4s ease;
+}
+
+.activity-card:hover .activity-icon {
+  background: var(--accent);
+  color: white;
+  transform: rotate(-12deg) scale(1.08);
+}
+
+/* Text brightens and the certificate button slides forward */
+.activity-card h3 {
+  transition: color 0.3s ease;
+}
+
+.activity-card:hover h3 {
+  color: var(--accent-light);
+}
+
+.activity-card:hover .experience-role,
+.activity-card:hover .experience-date,
+.activity-card:hover .experience-description {
+  color: var(--text);
+}
+
+.certificate-link i {
+  transition: transform 0.35s ease;
+}
+
+.activity-card:hover .certificate-link {
+  transform: translateX(6px);
+}
+
+.activity-card:hover .activity-number {
+  color: rgba(124, 92, 255, 0.14);
+  transition: color 0.4s ease;
+}
+
+.experience-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Internship buttons: light hover without extra glow */
+.experience-links .certificate-link:hover,
+.activity-content>.certificate-link:hover {
+  background: var(--accent-light);
+  border-color: var(--accent-light);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+/* =========================================================
+   MOBILE ANIMATIONS
+   Phones have no hover, so motion follows your scroll and touch.
+========================================================= */
+
+/* ---- Touch feedback: cards press in when tapped ---- */
+@media (hover: none) {
+
+  .stat,
+  .skill-card,
+  .course-card,
+  .project-card,
+  .certificate-card,
+  .timeline-content,
+  .interest,
+  .growth-code {
+    transition-property: transform, box-shadow, border-color, background-color, background-size;
+    transition-duration: 0.2s;
+  }
+
+  .stat:active,
+  .skill-card:active,
+  .course-card:active,
+  .project-card:active,
+  .certificate-card:active,
+  .timeline-content:active,
+  .interest:active {
+    transform: scale(0.96);
+    border-color: rgba(124, 92, 255, 0.7);
+    box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.14), 0 14px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .primary-btn:active,
+  .secondary-btn:active,
+  .certificate-link:active,
+  .project-links a:active {
+    transform: scale(0.95);
+  }
+}
+
+/* ---- Mobile menu: links slide in one by one ---- */
+@media (max-width: 950px) and (prefers-reduced-motion: no-preference) {
+  .nav-links.active li {
+    animation: navItemIn 0.45s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+  }
+
+  .nav-links.active li:nth-child(1) {
+    animation-delay: 0.04s;
+  }
+
+  .nav-links.active li:nth-child(2) {
+    animation-delay: 0.09s;
+  }
+
+  .nav-links.active li:nth-child(3) {
+    animation-delay: 0.14s;
+  }
+
+  .nav-links.active li:nth-child(4) {
+    animation-delay: 0.19s;
+  }
+
+  .nav-links.active li:nth-child(5) {
+    animation-delay: 0.24s;
+  }
+
+  .nav-links.active li:nth-child(6) {
+    animation-delay: 0.29s;
+  }
+
+  .nav-links.active li:nth-child(7) {
+    animation-delay: 0.34s;
+  }
+
+  .nav-links.active li:nth-child(8) {
+    animation-delay: 0.39s;
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+
+  /* Hero: steps light up one after another, code box floats, back-to-top pulses */
+  .growth-step::before {
+    animation: stepLight 6s ease-in-out infinite;
+  }
+
+  .growth-step:nth-child(2)::before {
+    animation-delay: 1.5s;
+  }
+
+  .growth-step:nth-child(3)::before {
+    animation-delay: 3s;
+  }
+
+  .growth-step:nth-child(4)::before {
+    animation-delay: 4.5s;
+  }
+
+  .growth-code {
+    animation: codeFloat 6s ease-in-out infinite;
+  }
+
+  #backToTop.show::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--accent-light);
+    animation: iconPulse 2.2s ease-out infinite;
+    pointer-events: none;
+  }
+
+  /* Cards: each one animates when IT scrolls into view */
+  @supports (animation-timeline: view()) {
+
+    /* Page scroll progress bar */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      z-index: 2000;
+      background: linear-gradient(90deg, #7c5cff, #00e5ff);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: scrollBar linear both;
+      animation-timeline: scroll(root);
+    }
+
+    .reveal.show :is(.skill-card, .course-card, .stat, .timeline-content, .project-card, .certificate-card, .activity-card):nth-child(n) {
+      animation-delay: 0s;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 75%;
+    }
+
+    .reveal.show .skill-card:nth-child(n) {
+      animation-name: mFlip;
+    }
+
+    .reveal.show .course-card:nth-child(n) {
+      animation-name: mZoom;
+    }
+
+    .reveal.show .timeline-content:nth-child(n),
+    .reveal.show .project-card:nth-child(n),
+    .reveal.show .activity-card:nth-child(n) {
+      animation-name: mUp;
+    }
+
+    .reveal.show .stat:nth-child(odd),
+    .reveal.show .certificate-card:nth-child(odd) {
+      animation-name: mLeft;
+    }
+
+    .reveal.show .stat:nth-child(even),
+    .reveal.show .certificate-card:nth-child(even) {
+      animation-name: mRight;
+    }
+
+    /* Skill cards: shine sweeps across and icon spins in as you scroll */
+    .skill-card::before {
+      left: 0;
+      width: 40%;
+      transition: none;
+      animation: shineSweep linear both;
+      animation-timeline: view();
+      animation-range: entry 30% entry 100%;
+    }
+
+    .skill-icon {
+      animation: iconSpin linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 100%;
+    }
+
+    /* Education brackets and Core CS underline draw themselves */
+    .timeline-content::before,
+    .timeline-content::after {
+      animation: bracketDraw linear both;
+      animation-timeline: view();
+      animation-range: entry 30% entry 100%;
+    }
+
+    .course-card {
+      animation: underlineDraw linear both;
+      animation-timeline: view();
+      animation-range: entry 50% entry 100%;
+    }
+
+    .reveal.show .course-card:nth-child(n) {
+      animation: mZoom linear both, underlineDraw linear both;
+      animation-timeline: view(), view();
+      animation-range: entry 0% entry 75%, entry 50% entry 100%;
+    }
+
+    /* Certificates: colour wipes in as the card reaches mid-screen */
+    .certificate-card {
+      background-image: linear-gradient(180deg, #7c5cff, #00e5ff);
+      background-position: left top;
+      background-repeat: no-repeat;
+      background-size: 3px 0;
+    }
+
+    .certificate-card:hover {
+      background-size: 3px 100%;
+    }
+
+    .reveal.show .certificate-card:nth-child(odd) {
+      animation: mLeft linear both, wipeBar linear both;
+      animation-timeline: view(), view();
+      animation-range: entry 0% entry 75%, entry 50% entry 100%;
+    }
+
+    .reveal.show .certificate-card:nth-child(even) {
+      animation: mRight linear both, wipeBar linear both;
+      animation-timeline: view(), view();
+      animation-range: entry 0% entry 75%, entry 50% entry 100%;
+    }
+
+    /* Progress bars fill up, headings underline draws */
+    .progress span {
+      transform-origin: left;
+      animation: barFill linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 100%;
+    }
+
+    .section-heading h2::after {
+      content: "";
+      display: block;
+      width: 64px;
+      height: 3px;
+      margin-top: 14px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #7c5cff, #00e5ff);
+      transform-origin: left;
+      animation: lineGrow linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 100%;
+    }
+  }
+}
+
+@keyframes navItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+}
+
+@keyframes mFlip {
+  from {
+    opacity: 0;
+    transform: perspective(600px) rotateX(-35deg) translateY(50px) scale(0.94);
+  }
+}
+
+@keyframes mZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+}
+
+@keyframes mUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.94);
+    filter: blur(6px);
+  }
+}
+
+@keyframes mLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-55px) rotate(-2deg);
+  }
+}
+
+@keyframes mRight {
+  from {
+    opacity: 0;
+    transform: translateX(55px) rotate(2deg);
+  }
+}
+
+@keyframes scrollBar {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes shineSweep {
+  from {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+
+  to {
+    transform: translateX(560%) skewX(-20deg);
+  }
+}
+
+@keyframes iconSpin {
+  from {
+    opacity: 0.3;
+    transform: rotateY(-180deg) scale(0.5);
+  }
+}
+
+@keyframes bracketDraw {
+  to {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@keyframes underlineDraw {
+  to {
+    background-size: 100% 3px;
+  }
+}
+
+@keyframes wipeFill {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes wipeBar {
+  to {
+    background-size: 3px 100%;
+  }
+}
+
+@keyframes borderFade {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  30%,
+  70% {
+    opacity: 1;
+  }
+}
+
+@keyframes barGrow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes barFill {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes codeFloat {
+
+  0%,
+  100% {
+    transform: rotate(2deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(1deg) translateY(-7px);
+  }
+}
+
+@keyframes stepLight {
+
+  0%,
+  32%,
+  100% {
+    background: var(--background);
+    transform: rotate(45deg) scale(1);
+  }
+
+  6%,
+  22% {
+    background: var(--accent);
+    transform: rotate(45deg) scale(1.4);
+  }
 }
