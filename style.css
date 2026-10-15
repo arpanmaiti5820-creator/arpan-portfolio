@@ -3813,3 +3813,204 @@ body {
     transform: rotate(45deg) scale(1.4);
   }
 }
+
+/* ================================
+   COLLABNOTES PROJECT DETAILS MODAL
+================================ */
+
+.project-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-modal.is-open {
+  display: flex;
+}
+
+.project-modal-content {
+  position: relative;
+  width: min(850px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+  padding: 35px;
+  background: #17171f;
+  color: #f5f5f7;
+  border: 1px solid rgba(124, 92, 255, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+}
+
+.project-modal-content h2 {
+  color: #a18aff;
+  margin: 14px 0;
+}
+
+.project-modal-content h3 {
+  margin: 26px 0 12px;
+  color: #f5f5f7;
+}
+
+.project-modal-content p,
+.project-modal-content li {
+  color: #b8b8c5;
+  line-height: 1.8;
+}
+
+.project-modal-content ol {
+  padding-left: 24px;
+}
+
+.project-modal-content hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 24px 0;
+}
+
+.project-modal-close {
+  position: sticky;
+  float: right;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  margin: -10px -10px 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: #252530;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.project-modal-close:hover {
+  background: #7c5cff;
+}
+
+.modal-project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.modal-project-actions a {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 18px;
+  border: 1px solid #7c5cff;
+  border-radius: 8px;
+  color: #a18aff;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.modal-project-actions a:hover {
+  background: #a18aff;
+  border-color: #a18aff;
+  color: #fff;
+}
+
+
+.project-details-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-color, #f5f5f7);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.project-details-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent, #7c5cff);
+  color: var(--accent-light, #a18aff);
+  transform: translateY(-2px);
+}
+
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .project-modal {
+    padding: 12px;
+  }
+
+  .project-modal-content {
+    padding: 24px 18px;
+    max-height: 94vh;
+  }
+
+  .modal-project-actions a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* CollabNotes screenshot gallery */
+.collabnotes-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.collabnotes-shot {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #202029;
+  border: 1px solid rgba(124, 92, 255, 0.3);
+  border-radius: 12px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.collabnotes-shot:hover {
+  transform: translateY(-3px);
+  border-color: #7c5cff;
+}
+
+.collabnotes-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  object-position: top;
+  background: #0b0d14;
+}
+
+.collabnotes-shot figcaption {
+  padding: 12px;
+  color: #b8b8c5;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .collabnotes-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .collabnotes-shot img {
+    max-height: 280px;
+  }
+}

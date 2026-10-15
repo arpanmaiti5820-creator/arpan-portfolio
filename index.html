@@ -608,6 +608,12 @@
             </div>
 
             <div class="project-links">
+
+              <button type="button" class="project-details-btn" id="collabnotesDetailsBtn">
+                <i class="fa-solid fa-circle-info"></i>
+                View Details
+              </button>
+
               <a href="https://collabnotes-q6qq.onrender.com" target="_blank" rel="noopener noreferrer">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 Live Demo
@@ -912,9 +918,101 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <button id="backToTop">↑</button>
-  <script src="script.js"></script>
+  <!-- COLLABNOTES PROJECT DETAILS MODAL -->
+  <div class="project-modal" id="collabnotesModal" aria-hidden="true">
+    <div class="project-modal-content" role="dialog" aria-modal="true" aria-labelledby="collabnotesModalTitle">
+
+      <button type="button" class="project-modal-close" id="closeCollabnotesModal" aria-label="Close project details">
+        &times;
+      </button>
+
+      <span class="project-type">FULL-STACK PROJECT</span>
+
+      <h2 id="collabnotesModalTitle">CollabNotes</h2>
+
+      <p>
+        A full-stack collaborative notes platform built to create,
+        organize, search and share notes.
+      </p>
+
+      <hr>
+
+      <h3>Project Overview</h3>
+      <p>
+        CollabNotes helps users manage their notes, organize folders,
+        save favorites, manage attachments and restore deleted notes.
+      </p>
+
+      <h3>How to Use</h3>
+      <ol>
+        <li>Register or sign in to your account.</li>
+        <li>Create notes and add their titles and content.</li>
+        <li>Organize notes into folders.</li>
+        <li>Search notes and mark important notes as favorites.</li>
+        <li>Use Trash to manage deleted notes.</li>
+      </ol>
+
+      <!-- REAL COLLABNOTES SCREENSHOTS -->
+      <h3>Project Screenshots</h3>
+      <p>Explore the actual interface and features of CollabNotes.</p>
+
+      <div class="collabnotes-gallery">
+
+        <figure class="collabnotes-shot">
+          <img src="screenshots/Screenshot 2026-10-15 123054.png"
+            alt="CollabNotes dashboard showing statistics and recent notes" loading="lazy" />
+          <figcaption>
+            Dashboard — Notes, favorites, folders and recent activity
+          </figcaption>
+        </figure>
+
+        <figure class="collabnotes-shot">
+          <img src="screenshots/Screenshot 2026-10-15 123119.png" alt="CollabNotes edit note interface"
+            loading="lazy" />
+          <figcaption>
+            Note Editor — Edit titles, content, folders and visibility
+          </figcaption>
+        </figure>
+
+        <figure class="collabnotes-shot">
+          <img src="screenshots/Screenshot 2026-10-15 123136.png"
+            alt="CollabNotes sidebar showing navigation and folders" loading="lazy" />
+          <figcaption>
+            Navigation — All Notes, Favorites, Trash and custom folders
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <h3>Technology Stack</h3>
+      <div class="project-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Node.js</span>
+        <span>Express.js</span>
+        <span>MongoDB</span>
+        <span>JWT</span>
+        <span>Google OAuth</span>
+      </div>
+
+      <div class="modal-project-actions">
+        <a href="https://collabnotes-q6qq.onrender.com" target="_blank" rel="noopener noreferrer">
+          Live Demo
+        </a>
+
+        <a href="https://github.com/arpanmaiti5820-creator/CollabNotes" target="_blank" rel="noopener noreferrer">
+          GitHub Repository
+        </a>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+<!-- JavaScript -->
+<button id="backToTop">↑</button>
+<script src="script.js"></script>
 </body>
 
 </html>
