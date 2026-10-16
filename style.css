@@ -4014,3 +4014,39 @@ body.modal-open {
     max-height: 280px;
   }
 }
+/* ExpenseTracker screenshot gallery */
+.expensetracker-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.expensetracker-shot {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid rgba(124, 92, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(124, 92, 255, 0.04);
+  overflow: hidden;
+}
+
+.expensetracker-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.expensetracker-shot figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--accent-light);
+}
+
+@media (max-width: 600px) {
+  .expensetracker-gallery {
+    grid-template-columns: 1fr;
+  }
+}

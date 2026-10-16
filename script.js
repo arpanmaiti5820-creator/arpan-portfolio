@@ -197,3 +197,67 @@ document.addEventListener("keydown", (event) => {
     document.body.classList.remove("modal-open");
   }
 });
+
+
+/* =====================================
+   EXPENSETRACKER DETAILS MODAL
+===================================== */
+
+const expenseTrackerDetailsBtn = document.getElementById(
+  "expenseTrackerDetailsBtn"
+);
+
+const expenseTrackerModal = document.getElementById(
+  "expenseTrackerModal"
+);
+
+const closeExpenseTrackerModal = document.getElementById(
+  "closeExpenseTrackerModal"
+);
+
+function openExpenseTrackerModal() {
+  if (!expenseTrackerModal) return;
+
+  expenseTrackerModal.classList.add("is-open");
+  expenseTrackerModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeExpenseTrackerDetails() {
+  if (!expenseTrackerModal) return;
+
+  expenseTrackerModal.classList.remove("is-open");
+  expenseTrackerModal.setAttribute("aria-hidden", "true");
+
+  // Keep the page locked if the CollabNotes modal is still open.
+  const collabnotesModal = document.getElementById("collabnotesModal");
+
+  if (!collabnotesModal?.classList.contains("is-open")) {
+    document.body.classList.remove("modal-open");
+  }
+}
+
+expenseTrackerDetailsBtn?.addEventListener(
+  "click",
+  openExpenseTrackerModal
+);
+
+closeExpenseTrackerModal?.addEventListener(
+  "click",
+  closeExpenseTrackerDetails
+);
+
+expenseTrackerModal?.addEventListener("click", (event) => {
+  if (event.target === expenseTrackerModal) {
+    closeExpenseTrackerDetails();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    expenseTrackerModal?.classList.contains("is-open")
+  ) {
+    closeExpenseTrackerDetails();
+  }
+});

@@ -89,7 +89,7 @@
             <i class="fa-solid fa-arrow-right"></i>
           </a>
 
-          <a href="Arpan_Maiti_CV.pdf" class="primary-btn" target="_blank">
+          <a href="Arpan_Maiti_resume.pdf" class="primary-btn" target="_blank">
             <i class="fa-regular fa-file"></i>
             View Resume
           </a>
@@ -111,8 +111,6 @@
           </a>
         </div>
       </div>
-
-      <!-- Developer Code Card -->
 
       <!-- Developer Growth Visual -->
 
@@ -627,22 +625,23 @@
         </div>
 
 
-        <!-- LM CHECK -->
+        <!-- EXPENSETRACKER PROJECT -->
         <div class="project-card">
           <div class="project-icon">
-            <i class="fa-solid fa-scale-balanced"></i>
+            <i class="fa-solid fa-wallet"></i>
           </div>
 
           <div class="project-content">
-            <span class="project-type"> HACKATHON PROJECT </span>
+            <span class="project-type">FULL-STACK PROJECT</span>
 
-            <h3>NutriScan</h3>
+            <h3>ExpenseTracker</h3>
 
             <p>
-              A compliance-checking system that analyzes packaged product
-              labels and extracts mandatory declarations such as MRP, net
-              quantity, batch number and manufacturing/ expiry dates to
-              identify potential Legal Metrology violations.
+              A full-stack expense management application built with
+              HTML, CSS, JavaScript, Node.js, Express.js and MongoDB.
+              Users can manage their expenses, edit records, restore
+              deleted entries and permanently delete expenses through
+              a responsive interface with persistent data storage.
             </p>
 
             <div class="project-tags">
@@ -650,18 +649,36 @@
               <span>CSS</span>
               <span>JavaScript</span>
               <span>Node.js</span>
-              <span>OCR</span>
+              <span>Express.js</span>
+              <span>MongoDB</span>
+              <span>Mongoose</span>
+              <span>REST API</span>
+              <span>Google OAuth</span>
             </div>
 
+
             <div class="project-links">
-              <a href="https://github.com/arpanmaiti5820-creator/NUTRISCAN_PRADAA" target="_blank"
+              <button type="button" class="project-details-btn" id="expenseTrackerDetailsBtn">
+                <i class="fa-solid fa-circle-info"></i>
+                View Details
+              </button>
+
+              <a href="https://github.com/arpanmaiti5820-creator/ExpenceTracker/" target="_blank"
                 rel="noopener noreferrer">
                 <i class="fa-brands fa-github"></i>
                 GitHub
               </a>
+
+              <a href="https://arpanmaiti5820-creator.github.io/ExpenceTracker/" target="_blank"
+                rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                Live Demo
+              </a>
             </div>
+
           </div>
         </div>
+
 
         <!-- REPLIT AI PROJECT -->
         <div class="project-card">
@@ -670,7 +687,7 @@
           </div>
 
           <div class="project-content">
-            <span class="project-type"> FULL-STACK PROJECT </span>
+            <span class="project-type"> FRONTEND PROJECT </span>
 
             <h3>AI-Assisted Web Application</h3>
 
@@ -996,17 +1013,85 @@
         <span>Google OAuth</span>
       </div>
 
-      <div class="modal-project-actions">
-        <a href="https://collabnotes-q6qq.onrender.com" target="_blank" rel="noopener noreferrer">
-          Live Demo
-        </a>
+    </div>
+  </div>
 
-        <a href="https://github.com/arpanmaiti5820-creator/CollabNotes" target="_blank" rel="noopener noreferrer">
-          GitHub Repository
-        </a>
+  <!-- EXPENSETRACKER PROJECT DETAILS MODAL -->
+  <div class="project-modal" id="expenseTrackerModal" aria-hidden="true">
+    <div class="project-modal-content" role="dialog" aria-modal="true" aria-labelledby="expenseTrackerModalTitle">
+      <button type="button" class="project-modal-close" id="closeExpenseTrackerModal"
+        aria-label="Close ExpenseTracker details">
+        &times;
+      </button>
+
+      <span class="project-type">FULL-STACK PROJECT</span>
+      <h2 id="expenseTrackerModalTitle">ExpenseTracker</h2>
+
+      <p>
+        A full-stack expense management application designed to help users
+        organize expense records through a responsive interface.
+      </p>
+
+      <hr />
+
+      <h3>Project Overview</h3>
+      <p>
+        ExpenseTracker provides expense management with backend data
+        persistence. Users can manage expense records, edit entries,
+        restore deleted expenses, and permanently delete records.
+      </p>
+
+      <h3>Key Features</h3>
+      <ul class="expense-feature-list">
+        <li>Add and manage expense records</li>
+        <li>Edit existing expenses</li>
+        <li>Validate expense amounts and dates</li>
+        <li>Move deleted expenses to Trash and restore them</li>
+        <li>Permanently delete unwanted records</li>
+        <li>Store application data in MongoDB</li>
+      </ul>
+
+      <h3>Project Screenshots</h3>
+      <p>Explore the actual ExpenseTracker interface.</p>
+
+
+      <div class="expensetracker-gallery">
+        <figure class="expensetracker-shot">
+          <img src="./screenshots/Screenshot 2026-10-16 231459.png" alt="ExpenseTracker login page" loading="lazy" />
+          <figcaption>Login Page</figcaption>
+        </figure>
+
+        <figure class="expensetracker-shot">
+          <img src="./screenshots/Screenshot 2026-10-16 231549.png" alt="ExpenseTracker financial dashboard" loading="lazy" />
+          <figcaption>Financial Dashboard</figcaption>
+        </figure>
+
+        <figure class="expensetracker-shot">
+          <img src="./screenshots/Screenshot 2026-10-16 231618.png" alt="ExpenseTracker analytics and spending charts"
+            loading="lazy" />
+          <figcaption>Analytics &amp; Spending Insights</figcaption>
+        </figure>
+
+        <figure class="expensetracker-shot">
+          <img src="./screenshots/Screenshot 2026-10-16 231716.png" alt="ExpenseTracker add transaction form" loading="lazy" />
+          <figcaption>Add Transaction</figcaption>
+        </figure>
       </div>
 
+
+      <h3>Technology Stack</h3>
+      <div class="project-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Node.js</span>
+        <span>Express.js</span>
+        <span>MongoDB</span>
+        <span>Mongoose</span>
+        <span>REST API</span>
+      </div>
     </div>
+  </div>
   </div>
 
   <!-- Back to Top Button -->
@@ -1015,4 +1100,5 @@
   <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
+
 </html>
